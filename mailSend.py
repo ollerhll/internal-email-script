@@ -24,4 +24,4 @@ def send_mail(subject, host_name, host_port):
     s = smtplib.SMTP(smtp_server)
     s.sendmail(from_address, to_address, msg.as_string())
     s.quit()
-send_mail("Lemurs", "test.com", "80")
+send_mail("Lemurs 2", "test.com", "80")
