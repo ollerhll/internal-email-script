@@ -29,10 +29,10 @@ def send_mail(subject, smtp_server, secure):
     s.quit()
 
 try:
-    send_mail("Lemurs", "smtp.gmail.com", true)
+    send_mail("Lemurs", "smtp.gmail.com", True)
 except Exception as err:
     print err
     try:
-        send_mail("Lemurs 2", "internal-mail-router.oracle.com", false)
+        send_mail("Lemurs 2", "internal-mail-router.oracle.com", False)
     except Exception as err2:
         print err2
