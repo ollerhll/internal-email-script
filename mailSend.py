@@ -3,9 +3,8 @@ import smtplib
 import sys
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-def send_mail(subject, host_name, host_port):
-    smtp_server  = "internal-mail-router.oracle.com"
-    from_address = "spinnaker-test-mail@oracle.com"
+def send_mail(subject, smtp_server, secure):
+    from_address = "arthurhwoodhouse@gmail.com"
     to_address   = "aatina.punjabi@oracle.com"
     body         = "I'm afraid the lemur got into the pudding cups."
 
@@ -20,8 +19,19 @@ def send_mail(subject, host_name, host_port):
     part2 = MIMEText(html, 'html')
     msg.attach(part1)
     msg.attach(part2)
-
-    s = smtplib.SMTP(smtp_server)
+    if secure:
+        s = smtplib.SMTP_SSL(smtp_server, 465)
+        s.ehlo()
+        s.login("arthurhwoodhouse@gmail.com", "coarsesand")
+    else:
+        s = smtplib.SMTP(smtp_server)    
     s.sendmail(from_address, to_address, msg.as_string())
     s.quit()
-send_mail("Lemurs 2", "test.com", "80")
+
+try:
+    send_mail("Lemurs", "smtp.gmail.com", true)
+except:
+    try:
+        send_mail("Lemurs 2", "internal-mail-router.oracle.com", false)
+    except:
+        pass
