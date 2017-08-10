@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 def send_mail(subject, smtp_server, secure):
     from_address = "arthurhwoodhouse@gmail.com"
-    to_address   = "aatina.punjabi@oracle.com"
+    to_address   = "lloyd.ollerhead@oracle.com"
     body         = "I'm afraid the lemur got into the pudding cups."
 
     msg = MIMEMultipart('alternative')
